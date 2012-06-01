@@ -18,6 +18,7 @@
 		4640043B1578B7EC009704B2 /* CGContextHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 464004361578B7EC009704B2 /* CGContextHelper.m */; };
 		4640043C1578B7EC009704B2 /* LayoutHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 464004381578B7EC009704B2 /* LayoutHelper.m */; };
 		4640043D1578B7EC009704B2 /* UUIDGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4640043A1578B7EC009704B2 /* UUIDGenerator.m */; };
+		464004441578BA65009704B2 /* AsyncUIImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 464004431578BA65009704B2 /* AsyncUIImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,8 @@
 		464004381578B7EC009704B2 /* LayoutHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LayoutHelper.m; path = Classes/LayoutHelper.m; sourceTree = "<group>"; };
 		464004391578B7EC009704B2 /* UUIDGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UUIDGenerator.h; path = Classes/UUIDGenerator.h; sourceTree = "<group>"; };
 		4640043A1578B7EC009704B2 /* UUIDGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UUIDGenerator.m; path = Classes/UUIDGenerator.m; sourceTree = "<group>"; };
+		464004421578BA65009704B2 /* AsyncUIImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncUIImageView.h; path = Classes/AsyncUIImageView.h; sourceTree = "<group>"; };
+		464004431578BA65009704B2 /* AsyncUIImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncUIImageView.m; path = Classes/AsyncUIImageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 		464004331578B7E0009704B2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				464004421578BA65009704B2 /* AsyncUIImageView.h */,
+				464004431578BA65009704B2 /* AsyncUIImageView.m */,
 				464004351578B7EC009704B2 /* CGContextHelper.h */,
 				464004361578B7EC009704B2 /* CGContextHelper.m */,
 				464004371578B7EC009704B2 /* LayoutHelper.h */,
@@ -189,6 +194,7 @@
 				4640043B1578B7EC009704B2 /* CGContextHelper.m in Sources */,
 				4640043C1578B7EC009704B2 /* LayoutHelper.m in Sources */,
 				4640043D1578B7EC009704B2 /* UUIDGenerator.m in Sources */,
+				464004441578BA65009704B2 /* AsyncUIImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
