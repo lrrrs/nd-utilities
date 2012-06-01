@@ -9,9 +9,20 @@
 
 @interface CGContextHelper : NSObject
 
++(void) makeRoundedRectPath:(CGRect)rect
+                 withRadius:(CGFloat)radius
+                 forContext:(CGContextRef)context;
+
 +(void) drawRoundedRectWithColor:(UIColor *) color
                           inRect:(CGRect) rect
                      withContext:(CGContextRef)context
                        andRadius:(CGFloat)radius;
+
++(void) drawRoundedRectWithColors:(NSArray *) colors
+                           inRect:(CGRect) rect
+                      withContext:(CGContextRef)context
+                        andRadius:(CGFloat)radius
+                    gradientStart:(CGPoint)gradientStart
+                      gradientEnd:(CGPoint)gradientEnd;
 
 @end
