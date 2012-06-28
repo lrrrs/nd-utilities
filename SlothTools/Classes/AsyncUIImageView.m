@@ -15,7 +15,8 @@
 	if (self)
 	{
 		self.backgroundColor = [UIColor lightGrayColor];
-		//self.contentMode = UIViewContentModeScaleAspectFit;
+		self.contentMode = UIViewContentModeScaleAspectFill;
+        self.clipsToBounds = YES;
 		//self.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 	}
 	return self;
@@ -62,6 +63,11 @@
 	connection = nil;
 }
 
+-(void) dealloc
+{
+	[connection cancel];
+    data = nil;
+}
 
 
 @end

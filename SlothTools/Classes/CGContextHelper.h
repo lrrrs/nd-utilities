@@ -25,4 +25,14 @@
                     gradientStart:(CGPoint)gradientStart
                       gradientEnd:(CGPoint)gradientEnd;
 
++(void) drawRectWithColor:(UIColor *) color
+                   inRect:(CGRect) rect
+              withContext:(CGContextRef)context;
+
++(void) drawRectWithColors:(NSArray *) colors
+                    inRect:(CGRect) rect
+               withContext:(CGContextRef)context
+             gradientStart:(CGPoint)gradientStart
+               gradientEnd:(CGPoint)gradientEnd;
+
 @end

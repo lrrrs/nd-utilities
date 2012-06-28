@@ -56,67 +56,68 @@
 +(void) align:(UIView *) front
          back:(UIView *) back
     alignment:(LayoutHelperAlignMode) alignment
+          gap:(CGFloat) gap
 {
 	switch (alignment)
 	{
 	 case LayoutHelperAlignModeTopLeft:
 	 case LayoutHelperAlignModeLeftTop:
-		 front.frame = CGRectMake(0.0,
-					 0.0,
-					 front.frame.size.width,
-					 front.frame.size.height);
+		 front.frame = CGRectMake(gap,
+                                  gap,
+                                  front.frame.size.width,
+                                  front.frame.size.height);
 		 break;
 
 	 case LayoutHelperAlignModeTopCenter:
-		 front.frame = CGRectMake(back.frame.size.width * 0.5 - front.frame.size.width * 0.5,
-					 0.0,
-					 front.frame.size.width,
-					 front.frame.size.height);
+		 front.frame = CGRectMake(roundf(back.frame.size.width * 0.5 - front.frame.size.width * 0.5),
+                                  gap,
+                                  front.frame.size.width,
+                                  front.frame.size.height);
 		 break;
 
 	 case LayoutHelperAlignModeTopRight:
 	 case LayoutHelperAlignModeRightTop:
-		 front.frame = CGRectMake(back.frame.size.width - front.frame.size.width,
-					 0.0,
-					 front.frame.size.width,
-					 front.frame.size.height);
+		 front.frame = CGRectMake(roundf(back.frame.size.width - front.frame.size.width - gap),
+                                  gap,
+                                  front.frame.size.width,
+                                  front.frame.size.height);
 		 break;
 
 	 case LayoutHelperAlignModeRightCenter:
-		 front.frame = CGRectMake(back.frame.size.width - front.frame.size.width,
-					 back.frame.size.height * 0.5 - front.frame.size.height * 0.5,
-					 front.frame.size.width,
-					 front.frame.size.height);
+		 front.frame = CGRectMake(roundf(back.frame.size.width - front.frame.size.width - gap),
+                                  roundf(back.frame.size.height * 0.5 - front.frame.size.height * 0.5),
+                                  front.frame.size.width,
+                                  front.frame.size.height);
 		 break;
 
 	 case LayoutHelperAlignModeRightBottom:
 	 case LayoutHelperAlignModeBottomRight:
-		 front.frame = CGRectMake(back.frame.size.width - front.frame.size.width,
-					 back.frame.size.height - front.frame.size.height,
-					 front.frame.size.width,
-					 front.frame.size.height);
+		 front.frame = CGRectMake(roundf(back.frame.size.width - front.frame.size.width - gap),
+                                  roundf(back.frame.size.height - front.frame.size.height - gap),
+                                  front.frame.size.width,
+                                  front.frame.size.height);
 		 break;
 
 	 case LayoutHelperAlignModeBottomCenter:
-		 front.frame = CGRectMake(back.frame.size.width * 0.5 - front.frame.size.width * 0.5,
-					 back.frame.size.height - front.frame.size.height,
-					 front.frame.size.width,
-					 front.frame.size.height);
+		 front.frame = CGRectMake(roundf(back.frame.size.width * 0.5 - front.frame.size.width * 0.5),
+                                  roundf(back.frame.size.height - front.frame.size.height - gap),
+                                  front.frame.size.width,
+                                  front.frame.size.height);
 		 break;
 
 	 case LayoutHelperAlignModeBottomLeft:
 	 case LayoutHelperAlignModeLeftBottom:
-		 front.frame = CGRectMake(0.0,
-					 back.frame.size.height - front.frame.size.height,
-					 front.frame.size.width,
-					 front.frame.size.height);
+		 front.frame = CGRectMake(gap,
+                                  roundf(back.frame.size.height - front.frame.size.height - gap),
+                                  front.frame.size.width,
+                                  front.frame.size.height);
 		 break;
 
 	 case LayoutHelperAlignModeLeftCenter:
-		 front.frame = CGRectMake(0.0,
-					 back.frame.size.height * 0.5 - front.frame.size.height * 0.5,
-					 front.frame.size.width,
-					 front.frame.size.height);
+		 front.frame = CGRectMake(gap,
+                                  roundf(back.frame.size.height * 0.5 - front.frame.size.height * 0.5),
+                                  front.frame.size.width,
+                                  front.frame.size.height);
 		 break;
 	}
 }

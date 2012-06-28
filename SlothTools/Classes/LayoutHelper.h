@@ -46,7 +46,8 @@ LayoutHelperAlignMode;
 
 +(void) align:(UIView*) front
          back:(UIView*) back
-    alignment:(LayoutHelperAlignMode) alignment;
+    alignment:(LayoutHelperAlignMode) alignment
+          gap:(CGFloat) gap;
 
 +(UIImageView *) getImage:(NSString *) file;
 

@@ -19,6 +19,7 @@
 		4640043C1578B7EC009704B2 /* LayoutHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 464004381578B7EC009704B2 /* LayoutHelper.m */; };
 		4640043D1578B7EC009704B2 /* UUIDGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4640043A1578B7EC009704B2 /* UUIDGenerator.m */; };
 		464004441578BA65009704B2 /* AsyncUIImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 464004431578BA65009704B2 /* AsyncUIImageView.m */; };
+		46A42024159C6A7200DB6E85 /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A42023159C6A7200DB6E85 /* BackgroundView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,8 @@
 		4640043A1578B7EC009704B2 /* UUIDGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UUIDGenerator.m; path = Classes/UUIDGenerator.m; sourceTree = "<group>"; };
 		464004421578BA65009704B2 /* AsyncUIImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncUIImageView.h; path = Classes/AsyncUIImageView.h; sourceTree = "<group>"; };
 		464004431578BA65009704B2 /* AsyncUIImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncUIImageView.m; path = Classes/AsyncUIImageView.m; sourceTree = "<group>"; };
+		46A42022159C6A7200DB6E85 /* BackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BackgroundView.h; path = Classes/BackgroundView.h; sourceTree = "<group>"; };
+		46A42023159C6A7200DB6E85 /* BackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BackgroundView.m; path = Classes/BackgroundView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +117,8 @@
 		464004331578B7E0009704B2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				46A42022159C6A7200DB6E85 /* BackgroundView.h */,
+				46A42023159C6A7200DB6E85 /* BackgroundView.m */,
 				464004421578BA65009704B2 /* AsyncUIImageView.h */,
 				464004431578BA65009704B2 /* AsyncUIImageView.m */,
 				464004351578B7EC009704B2 /* CGContextHelper.h */,
@@ -195,6 +200,7 @@
 				4640043C1578B7EC009704B2 /* LayoutHelper.m in Sources */,
 				4640043D1578B7EC009704B2 /* UUIDGenerator.m in Sources */,
 				464004441578BA65009704B2 /* AsyncUIImageView.m in Sources */,
+				46A42024159C6A7200DB6E85 /* BackgroundView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
