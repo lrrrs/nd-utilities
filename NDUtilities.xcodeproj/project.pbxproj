@@ -1,0 +1,332 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4670B1CD15B587B50085C493 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4670B1CC15B587B50085C493 /* UIKit.framework */; };
+		4670B1CF15B587B50085C493 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4670B1CE15B587B50085C493 /* Foundation.framework */; };
+		4670B1D115B587B50085C493 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4670B1D015B587B50085C493 /* CoreGraphics.framework */; };
+		4670B1D715B587B50085C493 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4670B1D515B587B50085C493 /* InfoPlist.strings */; };
+		4670B1D915B587B50085C493 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4670B1D815B587B50085C493 /* main.m */; };
+		4670B1DD15B587B50085C493 /* NDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4670B1DC15B587B50085C493 /* NDAppDelegate.m */; };
+		4670B1E015B587B50085C493 /* NDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4670B1DF15B587B50085C493 /* NDViewController.m */; };
+		4670B1E315B587B60085C493 /* NDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4670B1E115B587B60085C493 /* NDViewController.xib */; };
+		4670B1F815B587FC0085C493 /* NDAsyncUIImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4670B1EB15B587FC0085C493 /* NDAsyncUIImageView.m */; };
+		4670B1F915B587FC0085C493 /* NDBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4670B1ED15B587FC0085C493 /* NDBackgroundView.m */; };
+		4670B1FA15B587FC0085C493 /* NDCGContextHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4670B1EF15B587FC0085C493 /* NDCGContextHelper.m */; };
+		4670B1FB15B587FC0085C493 /* NDLayoutHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4670B1F115B587FC0085C493 /* NDLayoutHelper.m */; };
+		4670B1FC15B587FC0085C493 /* NDStandardButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4670B1F315B587FC0085C493 /* NDStandardButton.m */; };
+		4670B1FD15B587FC0085C493 /* NDStandardLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4670B1F515B587FC0085C493 /* NDStandardLabel.m */; };
+		4670B1FE15B587FC0085C493 /* NDUUIDGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4670B1F715B587FC0085C493 /* NDUUIDGenerator.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4670B1C815B587B50085C493 /* NDUtilities.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NDUtilities.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4670B1CC15B587B50085C493 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4670B1CE15B587B50085C493 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4670B1D015B587B50085C493 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4670B1D415B587B50085C493 /* NDUtilities-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NDUtilities-Info.plist"; sourceTree = "<group>"; };
+		4670B1D615B587B50085C493 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4670B1D815B587B50085C493 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4670B1DA15B587B50085C493 /* NDUtilities-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NDUtilities-Prefix.pch"; sourceTree = "<group>"; };
+		4670B1DB15B587B50085C493 /* NDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDAppDelegate.h; sourceTree = "<group>"; };
+		4670B1DC15B587B50085C493 /* NDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDAppDelegate.m; sourceTree = "<group>"; };
+		4670B1DE15B587B50085C493 /* NDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDViewController.h; sourceTree = "<group>"; };
+		4670B1DF15B587B50085C493 /* NDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDViewController.m; sourceTree = "<group>"; };
+		4670B1E215B587B60085C493 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NDViewController.xib; sourceTree = "<group>"; };
+		4670B1EA15B587FC0085C493 /* NDAsyncUIImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; path = NDAsyncUIImageView.h; sourceTree = "<group>"; };
+		4670B1EB15B587FC0085C493 /* NDAsyncUIImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDAsyncUIImageView.m; sourceTree = "<group>"; };
+		4670B1EC15B587FC0085C493 /* NDBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; path = NDBackgroundView.h; sourceTree = "<group>"; };
+		4670B1ED15B587FC0085C493 /* NDBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDBackgroundView.m; sourceTree = "<group>"; };
+		4670B1EE15B587FC0085C493 /* NDCGContextHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; path = NDCGContextHelper.h; sourceTree = "<group>"; };
+		4670B1EF15B587FC0085C493 /* NDCGContextHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDCGContextHelper.m; sourceTree = "<group>"; };
+		4670B1F015B587FC0085C493 /* NDLayoutHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; path = NDLayoutHelper.h; sourceTree = "<group>"; };
+		4670B1F115B587FC0085C493 /* NDLayoutHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDLayoutHelper.m; sourceTree = "<group>"; };
+		4670B1F215B587FC0085C493 /* NDStandardButton.h */ = {isa = PBXFileReference; fileEncoding = 4; path = NDStandardButton.h; sourceTree = "<group>"; };
+		4670B1F315B587FC0085C493 /* NDStandardButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDStandardButton.m; sourceTree = "<group>"; };
+		4670B1F415B587FC0085C493 /* NDStandardLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; path = NDStandardLabel.h; sourceTree = "<group>"; };
+		4670B1F515B587FC0085C493 /* NDStandardLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDStandardLabel.m; sourceTree = "<group>"; };
+		4670B1F615B587FC0085C493 /* NDUUIDGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; path = NDUUIDGenerator.h; sourceTree = "<group>"; };
+		4670B1F715B587FC0085C493 /* NDUUIDGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDUUIDGenerator.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4670B1C515B587B50085C493 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4670B1CD15B587B50085C493 /* UIKit.framework in Frameworks */,
+				4670B1CF15B587B50085C493 /* Foundation.framework in Frameworks */,
+				4670B1D115B587B50085C493 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4670B1BD15B587B50085C493 = {
+			isa = PBXGroup;
+			children = (
+				4670B1D215B587B50085C493 /* NDUtilities */,
+				4670B1CB15B587B50085C493 /* Frameworks */,
+				4670B1C915B587B50085C493 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4670B1C915B587B50085C493 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4670B1C815B587B50085C493 /* NDUtilities.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4670B1CB15B587B50085C493 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4670B1CC15B587B50085C493 /* UIKit.framework */,
+				4670B1CE15B587B50085C493 /* Foundation.framework */,
+				4670B1D015B587B50085C493 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4670B1D215B587B50085C493 /* NDUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				4670B1E915B587FC0085C493 /* Classes */,
+				4670B1DB15B587B50085C493 /* NDAppDelegate.h */,
+				4670B1DC15B587B50085C493 /* NDAppDelegate.m */,
+				4670B1DE15B587B50085C493 /* NDViewController.h */,
+				4670B1DF15B587B50085C493 /* NDViewController.m */,
+				4670B1E115B587B60085C493 /* NDViewController.xib */,
+				4670B1D315B587B50085C493 /* Supporting Files */,
+			);
+			path = NDUtilities;
+			sourceTree = "<group>";
+		};
+		4670B1D315B587B50085C493 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4670B1D415B587B50085C493 /* NDUtilities-Info.plist */,
+				4670B1D515B587B50085C493 /* InfoPlist.strings */,
+				4670B1D815B587B50085C493 /* main.m */,
+				4670B1DA15B587B50085C493 /* NDUtilities-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4670B1E915B587FC0085C493 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4670B1EA15B587FC0085C493 /* NDAsyncUIImageView.h */,
+				4670B1EB15B587FC0085C493 /* NDAsyncUIImageView.m */,
+				4670B1EC15B587FC0085C493 /* NDBackgroundView.h */,
+				4670B1ED15B587FC0085C493 /* NDBackgroundView.m */,
+				4670B1EE15B587FC0085C493 /* NDCGContextHelper.h */,
+				4670B1EF15B587FC0085C493 /* NDCGContextHelper.m */,
+				4670B1F015B587FC0085C493 /* NDLayoutHelper.h */,
+				4670B1F115B587FC0085C493 /* NDLayoutHelper.m */,
+				4670B1F215B587FC0085C493 /* NDStandardButton.h */,
+				4670B1F315B587FC0085C493 /* NDStandardButton.m */,
+				4670B1F415B587FC0085C493 /* NDStandardLabel.h */,
+				4670B1F515B587FC0085C493 /* NDStandardLabel.m */,
+				4670B1F615B587FC0085C493 /* NDUUIDGenerator.h */,
+				4670B1F715B587FC0085C493 /* NDUUIDGenerator.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4670B1C715B587B50085C493 /* NDUtilities */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4670B1E615B587B60085C493 /* Build configuration list for PBXNativeTarget "NDUtilities" */;
+			buildPhases = (
+				4670B1C415B587B50085C493 /* Sources */,
+				4670B1C515B587B50085C493 /* Frameworks */,
+				4670B1C615B587B50085C493 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NDUtilities;
+			productName = NDUtilities;
+			productReference = 4670B1C815B587B50085C493 /* NDUtilities.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4670B1BF15B587B50085C493 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = ND;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 4670B1C215B587B50085C493 /* Build configuration list for PBXProject "NDUtilities" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4670B1BD15B587B50085C493;
+			productRefGroup = 4670B1C915B587B50085C493 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4670B1C715B587B50085C493 /* NDUtilities */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4670B1C615B587B50085C493 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4670B1D715B587B50085C493 /* InfoPlist.strings in Resources */,
+				4670B1E315B587B60085C493 /* NDViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4670B1C415B587B50085C493 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4670B1D915B587B50085C493 /* main.m in Sources */,
+				4670B1DD15B587B50085C493 /* NDAppDelegate.m in Sources */,
+				4670B1E015B587B50085C493 /* NDViewController.m in Sources */,
+				4670B1F815B587FC0085C493 /* NDAsyncUIImageView.m in Sources */,
+				4670B1F915B587FC0085C493 /* NDBackgroundView.m in Sources */,
+				4670B1FA15B587FC0085C493 /* NDCGContextHelper.m in Sources */,
+				4670B1FB15B587FC0085C493 /* NDLayoutHelper.m in Sources */,
+				4670B1FC15B587FC0085C493 /* NDStandardButton.m in Sources */,
+				4670B1FD15B587FC0085C493 /* NDStandardLabel.m in Sources */,
+				4670B1FE15B587FC0085C493 /* NDUUIDGenerator.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4670B1D515B587B50085C493 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4670B1D615B587B50085C493 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4670B1E115B587B60085C493 /* NDViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4670B1E215B587B60085C493 /* en */,
+			);
+			name = NDViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4670B1E415B587B60085C493 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4670B1E515B587B60085C493 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4670B1E715B587B60085C493 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NDUtilities/NDUtilities-Prefix.pch";
+				INFOPLIST_FILE = "NDUtilities/NDUtilities-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4670B1E815B587B60085C493 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NDUtilities/NDUtilities-Prefix.pch";
+				INFOPLIST_FILE = "NDUtilities/NDUtilities-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4670B1C215B587B50085C493 /* Build configuration list for PBXProject "NDUtilities" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4670B1E415B587B60085C493 /* Debug */,
+				4670B1E515B587B60085C493 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4670B1E615B587B60085C493 /* Build configuration list for PBXNativeTarget "NDUtilities" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4670B1E715B587B60085C493 /* Debug */,
+				4670B1E815B587B60085C493 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4670B1BF15B587B50085C493 /* Project object */;
+}
