@@ -31,6 +31,13 @@ colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
 blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 
+// rgb mix color
+#define mixColors(col1, col2, amount) [UIColor \
+colorWithRed:(((float)((col1 & 0xFF0000) >> 16)) * (1.0 - amount) + ((float)((col2 & 0xFF0000) >> 16)) * amount) / 255.0 \
+green:((float)(((col1 & 0xFF00) >> 8)) * (1.0 - amount) + ((float)((col2 & 0xFF00) >> 8)) * amount) / 255.0 \
+blue:(((float)(col1 & 0xFF)) * (1.0 - amount) + ((float)(col2 & 0xFF)) * amount) / 255.0 \
+alpha:1.0]
+
 // clamp macro
 #define CLAMP(x, a, b) (x < a ? a : (x > b ? b : x))
 

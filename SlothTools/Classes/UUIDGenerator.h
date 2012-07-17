@@ -10,5 +10,6 @@
 @interface UUIDGenerator : NSObject
 
 +(NSString*)getDeviceUUID;
++(NSString*)getRandomUniqueID;
 
 @end

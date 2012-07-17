@@ -12,6 +12,7 @@
     UIColor *color1;
     UIColor *color2;
     CGFloat radius;
+    BOOL isGlossy;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -31,5 +32,7 @@
              radius:(CGFloat)rad;
 
 -(void) enableShadow;
+
+-(void) enableGlossy;
 
 @end

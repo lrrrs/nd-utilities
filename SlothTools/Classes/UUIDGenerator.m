@@ -37,6 +37,14 @@
 	return tempUniqueID;
 }
 
++(NSString*)getRandomUniqueID
+{
+    CFUUIDRef theUUID = CFUUIDCreate(NULL);
+    CFStringRef uniqueString = CFUUIDCreateString(NULL, theUUID);
+    CFRelease(theUUID);
+    
+    return (__bridge NSString*)uniqueString;
+}
 
 
 @end

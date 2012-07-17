@@ -7,13 +7,23 @@
 //  Copyright (c) 2012lars@nulldesign.de All rights reserved.
 //
 
+@protocol AsyncUIImageViewDelegate;
 
 @interface AsyncUIImageView : UIImageView
 {
 	NSURLConnection *connection;
 	NSMutableData *data;
+    id<AsyncUIImageViewDelegate> __unsafe_unretained delegate;
 }
+
+@property (nonatomic, unsafe_unretained) id<AsyncUIImageViewDelegate> delegate;
 
 - (void)loadImageFromURL:(NSURL *)url;
 
+@end
+
+@protocol AsyncUIImageViewDelegate <NSObject>
+
+@optional
+-(void)asyncUIImageViewLoaded:(AsyncUIImageView*)imageView;
 @end

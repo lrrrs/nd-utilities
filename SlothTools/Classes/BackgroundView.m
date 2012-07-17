@@ -21,6 +21,7 @@
 		color1 = col1;
 		color2 = nil;
 		radius = rad;
+        isGlossy = NO;
 	}
 	return self;
 }
@@ -36,6 +37,7 @@
 		color1 = col1;
 		color2 = nil;
 		radius = 0.0;
+        isGlossy = NO;
 	}
 	return self;
 }
@@ -52,6 +54,7 @@
 		color1 = col1;
 		color2 = col2;
 		radius = 0.0;
+        isGlossy = NO;
 	}
 	return self;
 }
@@ -69,6 +72,7 @@
 		color1 = col1;
 		color2 = col2;
 		radius = rad;
+        isGlossy = NO;
 	}
 	return self;
 }
@@ -110,6 +114,18 @@
 			                               gradientEnd:CGPointMake(0.5, 1.0)];
 		}
 	}
+    
+    if(isGlossy)
+    {
+        CGRect glossyRect = rect;
+        glossyRect.origin.y += 1.0;
+        glossyRect.size.height *= 0.5;
+        [CGContextHelper drawRectWithColors:[NSArray arrayWithObjects:UIColorFromRGBWithAlpha(0xFFFFFF, 0.2), UIColorFromRGBWithAlpha(0xFFFFFF, 0.1), nil] 
+                                     inRect:glossyRect 
+                                withContext:c 
+                              gradientStart:CGPointMake(0.5, 0.0) 
+                                gradientEnd:CGPointMake(0.5, 1.0)]; 
+    }
 }
 
 
@@ -125,6 +141,12 @@
 	self.layer.shouldRasterize = YES;
 }
 
+
+-(void) enableGlossy
+{
+    isGlossy = YES;
+    [self setNeedsDisplay];
+}
 
 
 @end

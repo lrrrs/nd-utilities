@@ -71,7 +71,7 @@
 
 	CGPoint point1 = CGPointMake(rect.size.width * gradientStart.x, rect.size.height * gradientStart.y);
 	CGPoint point2 = CGPointMake(rect.size.width * gradientEnd.x, rect.size.height * gradientEnd.y);
-	CGContextDrawLinearGradient(context, gradient, point1, point2, (kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation));
+	CGContextDrawLinearGradient(context, gradient, point1, point2, kCGGradientDrawsBeforeStartLocation);
 	CGGradientRelease(gradient);
 }
 
@@ -107,9 +107,12 @@
 	CGGradientRef gradient = CGGradientCreateWithColors(space, (__bridge CFArrayRef)cgColors, locations);
 	CGColorSpaceRelease(space);
 
-	CGPoint point1 = CGPointMake(0.0, 0.0);
-	CGPoint point2 = CGPointMake(0.0, rect.size.height);
-	CGContextDrawLinearGradient(context, gradient, point1, point2, (kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation));
+    CGContextAddRect(context, rect);
+    CGContextClip(context);
+    
+	CGPoint point1 = CGPointMake(rect.size.width * gradientStart.x, rect.size.height * gradientStart.y);
+	CGPoint point2 = CGPointMake(rect.size.width * gradientEnd.x, rect.size.height * gradientEnd.y);
+	CGContextDrawLinearGradient(context, gradient, point1, point2, kCGGradientDrawsBeforeStartLocation);
 	CGGradientRelease(gradient);
 }
 

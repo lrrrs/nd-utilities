@@ -9,15 +9,17 @@
 
 @implementation AsyncUIImageView
 
+@synthesize delegate;
+
 - (id)initWithFrame:(CGRect)frame
 {
 	self = [super initWithFrame:frame];
 	if (self)
 	{
-		self.backgroundColor = [UIColor lightGrayColor];
+		self.backgroundColor = [UIColor clearColor];
 		self.contentMode = UIViewContentModeScaleAspectFill;
         self.clipsToBounds = YES;
-		//self.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+        self.image = nil;
 	}
 	return self;
 }
@@ -26,7 +28,8 @@
 
 - (void)loadImageFromURL:(NSURL *)url
 {
-	connection = nil;
+	[connection cancel];
+    connection = nil;
 	data = nil;
 
 	NSURLRequest *request = [NSURLRequest requestWithURL:url
@@ -61,6 +64,11 @@
 	
     data = nil;
 	connection = nil;
+    
+    if(delegate && [delegate respondsToSelector:@selector(asyncUIImageViewLoaded:)])
+    {
+        [delegate asyncUIImageViewLoaded:self];
+    }
 }
 
 -(void) dealloc

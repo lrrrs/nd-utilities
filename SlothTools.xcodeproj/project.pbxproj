@@ -20,6 +20,8 @@
 		4640043D1578B7EC009704B2 /* UUIDGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4640043A1578B7EC009704B2 /* UUIDGenerator.m */; };
 		464004441578BA65009704B2 /* AsyncUIImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 464004431578BA65009704B2 /* AsyncUIImageView.m */; };
 		46A42024159C6A7200DB6E85 /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A42023159C6A7200DB6E85 /* BackgroundView.m */; };
+		46B5285115B55A6A00C72E31 /* StandardButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B5284E15B55A6A00C72E31 /* StandardButton.m */; };
+		46B5285215B55A6A00C72E31 /* StandardLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B5285015B55A6A00C72E31 /* StandardLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,10 @@
 		464004431578BA65009704B2 /* AsyncUIImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncUIImageView.m; path = Classes/AsyncUIImageView.m; sourceTree = "<group>"; };
 		46A42022159C6A7200DB6E85 /* BackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BackgroundView.h; path = Classes/BackgroundView.h; sourceTree = "<group>"; };
 		46A42023159C6A7200DB6E85 /* BackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BackgroundView.m; path = Classes/BackgroundView.m; sourceTree = "<group>"; };
+		46B5284D15B55A6A00C72E31 /* StandardButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StandardButton.h; path = Classes/StandardButton.h; sourceTree = "<group>"; };
+		46B5284E15B55A6A00C72E31 /* StandardButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StandardButton.m; path = Classes/StandardButton.m; sourceTree = "<group>"; };
+		46B5284F15B55A6A00C72E31 /* StandardLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StandardLabel.h; path = Classes/StandardLabel.h; sourceTree = "<group>"; };
+		46B5285015B55A6A00C72E31 /* StandardLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StandardLabel.m; path = Classes/StandardLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +123,10 @@
 		464004331578B7E0009704B2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				46B5284D15B55A6A00C72E31 /* StandardButton.h */,
+				46B5284E15B55A6A00C72E31 /* StandardButton.m */,
+				46B5284F15B55A6A00C72E31 /* StandardLabel.h */,
+				46B5285015B55A6A00C72E31 /* StandardLabel.m */,
 				46A42022159C6A7200DB6E85 /* BackgroundView.h */,
 				46A42023159C6A7200DB6E85 /* BackgroundView.m */,
 				464004421578BA65009704B2 /* AsyncUIImageView.h */,
@@ -201,6 +211,8 @@
 				4640043D1578B7EC009704B2 /* UUIDGenerator.m in Sources */,
 				464004441578BA65009704B2 /* AsyncUIImageView.m in Sources */,
 				46A42024159C6A7200DB6E85 /* BackgroundView.m in Sources */,
+				46B5285115B55A6A00C72E31 /* StandardButton.m in Sources */,
+				46B5285215B55A6A00C72E31 /* StandardLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
