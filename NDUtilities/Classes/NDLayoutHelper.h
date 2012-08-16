@@ -37,6 +37,10 @@ LayoutHelperAlignMode;
             bottom:(UIView *) bottom
                gap:(CGFloat) gap;
 
++(void) placeBefore:(UIView *) left
+              right:(UIView *) right
+                gap:(CGFloat) gap;
+
 +(void) placeNext:(UIView *) left
             right:(UIView *) right
               gap:(CGFloat) gap;

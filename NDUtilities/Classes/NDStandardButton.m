@@ -56,8 +56,8 @@
 	{
 		self.isToggleButton = YES;
 		self.selected = NO;
-		[self setImage:unselectedImage forState:UIControlStateNormal];
-		[self setImage:selectedImage forState:UIControlStateSelected];
+		[self setBackgroundImage:unselectedImage forState:UIControlStateNormal];
+		[self setBackgroundImage:selectedImage forState:UIControlStateSelected | UIControlStateHighlighted];
 		self.adjustsImageWhenHighlighted = YES;
 
 		[self addTarget:self action:@selector(touchDown:) forControlEvents:UIControlEventTouchDown];
@@ -92,7 +92,26 @@
 	return self;
 }
 
+-(void) setPosition:(CGPoint)newPosition
+{
+	self.frame = CGRectMake(newPosition.x, newPosition.y, self.frame.size.width, self.frame.size.height);
+}
 
+-(void) setHighlighted:(BOOL)highlighted
+{
+    if(self.selected)
+    {
+        highlighted = YES;
+    }
+
+    [super setHighlighted:highlighted];
+}
+
+-(void) setSelected:(BOOL)selected
+{
+    [super setSelected:selected];
+    self.highlighted = selected;
+}
 
 -(void) touchDown:(id) sender
 {

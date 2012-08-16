@@ -25,4 +25,9 @@
 -(id)initAsToggleButton:(UIImage*) selectedImage
         unselectedImage:(UIImage*) unselectedImage;
 
+-(void) setPosition:(CGPoint)newPosition;
+
+-(void) touchUp:(id) sender;
+-(void) touchDown:(id) sender;
+
 @end

@@ -29,6 +29,16 @@
 }
 
 
++(void) placeBefore:(UIView *) left
+              right:(UIView *) right
+                gap:(CGFloat) gap
+{
+	left.frame = CGRectMake(right.frame.origin.x - left.frame.size.width - gap,
+                            right.frame.origin.y,
+                            left.frame.size.width,
+                            left.frame.size.height);
+}
+
 
 +(void) placeNext:(UIView *) left
             right:(UIView *) right

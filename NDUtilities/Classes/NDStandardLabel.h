@@ -7,41 +7,23 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum
-{
-	StandardLabelFontSizeHeadlineBig = 20,
-    StandardLabelFontSizeHeadline = 16,
-	StandardLabelFontSizeCopy = 15,
-	StandardLabelFontSizeCopySmall = 12
-}
-StandardLabelFontSize;
-
-
-typedef enum
-{
-	StandardLabelFontTypeRegular = 2,
-	StandardLabelFontTypeBold = 4
-}
-StandardLabelFontType;
-
 @interface NDStandardLabel : UILabel
 {
-	CGFloat maxWidth;
-	StandardLabelFontSize fontSize;
-	StandardLabelFontType fontType;
+
 }
 
 @property (nonatomic) CGPoint position;
-@property (nonatomic) StandardLabelFontSize fontSize;
-@property (nonatomic) StandardLabelFontType fontType;
+@property (nonatomic) CGFloat fontSize;
+@property (nonatomic) CGFloat fixedWidth;
+@property (nonatomic) CGFloat fixedHeight;
+@property (nonatomic) CGFloat maxWidth;
+@property (nonatomic) CGFloat maxHeight;
 
 -(id)initWithText:(NSString *)txt;
-
+-(id)initWithText:(NSString *)txt andFixedWidth:(CGFloat)width;
 -(id)initWithText:(NSString *)txt andMaxWidth:(CGFloat) width;
-
 -(id)initWithText:(NSString *)txt andMaxWidthSingleLine:(CGFloat) width;
-
--(void)enableShadow:(BOOL)shadow;
+-(id)initWithText:(NSString *)txt andMaxSize:(CGSize)size;
 
 -(CGRect)getLabelSizeFromText:(NSString *)txt;
 

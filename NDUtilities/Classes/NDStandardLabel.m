@@ -9,27 +9,42 @@
 
 @implementation NDStandardLabel
 
-@synthesize position;
-@synthesize fontSize;
-@synthesize fontType;
+@synthesize position = _position;
+@synthesize fontSize = _fontSize;
+@synthesize fixedWidth = _fixedWidth;
+@synthesize fixedHeight = _fixedHeight;
+@synthesize maxHeight = _maxHeight;
+@synthesize maxWidth = _maxWidth;
+
+- (void)setFixedHeight:(CGFloat)fixedHeight
+{
+	_fixedHeight = fixedHeight;
+	[self updateFrame];
+}
+
+- (void)setFixedWidth:(CGFloat)fixedWidth
+{
+	_fixedWidth = fixedWidth;
+	[self updateFrame];
+}
+
+
 
 -(CGRect)getLabelSizeFromText:(NSString *)txt
 {
 	CGSize textSize;
-/*
+
 	if (self.numberOfLines == 0)
 	{
 		textSize = [txt  sizeWithFont:self.font
-		            constrainedToSize:CGSizeMake(maxWidth, MAXFLOAT)
+		            constrainedToSize:CGSizeMake(_maxWidth, _maxHeight)
 		                lineBreakMode:self.lineBreakMode];
 	}
 	else
 	{
 		textSize = [txt sizeWithFont:self.font];
 	}
-*/
-    textSize = [self sizeThatFits:CGSizeMake(maxWidth, MAXFLOAT)];
-    
+
 	return CGRectMake(0.0, 0.0, textSize.width, textSize.height);
 }
 
@@ -39,12 +54,19 @@
 {
 	CGRect labelSize = [self getLabelSizeFromText:self.text];
 
-	if ((maxWidth > 0.0) && (maxWidth < labelSize.size.width))
+	if ((_maxWidth > 0.0f) && (_maxWidth < labelSize.size.width))
 	{
-		labelSize.size.width = maxWidth;
+		labelSize.size.width = _maxWidth;
+	}
+    if (_fixedWidth > 0.0f)
+	{
+		labelSize.size.width = _fixedWidth;
 	}
 
-	CGRect newFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y, labelSize.size.width, labelSize.size.height);
+	CGRect newFrame = CGRectMake(self.frame.origin.x,
+                                 self.frame.origin.y,
+                                 labelSize.size.width,
+                                 (self.fixedHeight != 0.0f) ? self.fixedHeight : labelSize.size.height);
 
 	self.frame = newFrame;
 }
@@ -67,14 +89,32 @@
 
 - (void)setup
 {
-	maxWidth = 0.0;
-	fontType = StandardLabelFontTypeRegular;
-	self.fontSize = StandardLabelFontSizeHeadline;
+	_maxWidth = 0.0f;
+	_maxHeight = MAXFLOAT;
+    _fixedWidth = 0.0f;
+	_fixedHeight = 0.0f;
+	_fontSize = 12.0f;
 	self.backgroundColor = [UIColor clearColor];
 	self.textColor = [UIColor whiteColor];
 	self.opaque = YES;
 	self.clipsToBounds = NO;
 	self.userInteractionEnabled = NO;
+}
+
+
+
+-(void) setMaxHeight:(CGFloat)maxHeight
+{
+	_maxHeight = maxHeight;
+	[self updateFrame];
+}
+
+
+
+-(void) setMaxWidth:(CGFloat)maxWidth
+{
+	_maxWidth = maxWidth;
+	[self updateFrame];
 }
 
 
@@ -87,30 +127,18 @@
 
 
 
--(void) setFontSize:(StandardLabelFontSize)newFontSize
+-(void) setFontSize:(CGFloat)newFontSize
 {
-	fontSize = newFontSize;
-	[self setFontType:self.fontType];
+	_fontSize = newFontSize;
 	[self setNeedsLayout];
 	[self setNeedsDisplay];
 }
 
 
 
--(void) setFontType:(StandardLabelFontType)newFontType
+-(void) setFont:(UIFont *)font
 {
-	fontType = newFontType;
-
-	switch (fontType)
-	{
-	 case StandardLabelFontTypeRegular:
-		 self.font = [UIFont systemFontOfSize:fontSize];
-		 break;
-
-	 case StandardLabelFontTypeBold:
-		 self.font = [UIFont boldSystemFontOfSize:fontSize];
-		 break;
-	}
+	[super setFont:font];
 	[self updateFrame];
 }
 
@@ -139,6 +167,22 @@
 }
 
 
+-(id)initWithText:(NSString *)txt andFixedWidth:(CGFloat)width
+{
+    self = [super initWithFrame:CGRectZero];
+	if (self)
+	{
+		[self setup];
+        
+		self.text = txt;
+		_fixedWidth = width;
+        self.textAlignment = UITextAlignmentCenter;
+        
+		[self updateFrame];
+	}
+	return self;
+}
+
 
 -(id)initWithText:(NSString *)txt
       andMaxWidth:(CGFloat) width
@@ -150,7 +194,8 @@
 
 		self.text = txt;
 		self.numberOfLines = 0;
-		maxWidth = width;
+		_maxWidth = width;
+		self.lineBreakMode = UILineBreakModeWordWrap;
 
 		[self updateFrame];
 	}
@@ -167,7 +212,7 @@
 		[self setup];
 
 		self.text = txt;
-		maxWidth = width;
+		_maxWidth = width;
 
 		[self updateFrame];
 	}
@@ -192,10 +237,22 @@
 
 
 
--(void)enableShadow:(BOOL)shadow
+-(id)initWithText:(NSString *)txt andMaxSize:(CGSize)size
 {
-	self.shadowColor = UIColorFromRGB(0x000000);
-	self.shadowOffset = CGSizeMake(0.0, -1.0);
+	self = [super initWithFrame:CGRectZero];
+	if (self)
+	{
+		[self setup];
+
+		self.text = txt;
+		self.numberOfLines = 0;
+		self.lineBreakMode = UILineBreakModeTailTruncation;
+		_maxWidth = size.width;
+		_maxHeight = size.height;
+
+		[self updateFrame];
+	}
+	return self;
 }
 
 

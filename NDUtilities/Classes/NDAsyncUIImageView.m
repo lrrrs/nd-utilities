@@ -18,8 +18,8 @@
 	{
 		self.backgroundColor = [UIColor clearColor];
 		self.contentMode = UIViewContentModeScaleAspectFill;
-        self.clipsToBounds = YES;
-        self.image = nil;
+		self.clipsToBounds = YES;
+		self.image = nil;
 	}
 	return self;
 }
@@ -28,53 +28,39 @@
 
 - (void)loadImageFromURL:(NSURL *)url
 {
-	[connection cancel];
-    connection = nil;
-	data = nil;
-
-	NSURLRequest *request = [NSURLRequest requestWithURL:url
-	                                         cachePolicy:NSURLRequestUseProtocolCachePolicy
-	                                     timeoutInterval:30.0];
-
-	connection = [[NSURLConnection alloc]
-	              initWithRequest:request delegate:self];
-}
-
-
-
-- (void)connection:(NSURLConnection *)theConnection
-    didReceiveData:(NSData *)incrementalData
-{
-	if (data == nil)
-	{
-		data = [[NSMutableData alloc] initWithCapacity:2048];
-	}
-	[data appendData:incrementalData];
-}
-
-
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)theConnection
-{
-	self.image = [UIImage imageWithData:data];
-    if(self.frame.size.width < 1.0 || self.frame.size.height < 1.0)
+    if([currentImageURL isEqual:url] && self.image != nil)
     {
-        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.image.size.width, self.image.size.height);
+        return;
     }
 	
-    data = nil;
-	connection = nil;
+    currentImageURL = url;
+    self.image = nil;
     
-    if(delegate && [delegate respondsToSelector:@selector(asyncUIImageViewLoaded:)])
-    {
-        [delegate asyncUIImageViewLoaded:self];
-    }
-}
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
 
--(void) dealloc
-{
-	[connection cancel];
-    data = nil;
+	dispatch_async(queue, ^{
+		
+        NSData *imgData = [NSData dataWithContentsOfURL:url];
+        UIImage *loadedImage = [UIImage imageWithData:imgData];
+        
+        if([currentImageURL isEqual:url])
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+            
+                self.image = loadedImage;
+            
+                if (self.frame.size.width < 1.0 || self.frame.size.height < 1.0)
+                {
+                    self.frame = CGRectMake (self.frame.origin.x, self.frame.origin.y, self.image.size.width, self.image.size.height);
+                }
+            
+                if (delegate && [delegate respondsToSelector:@selector(asyncUIImageViewLoaded:)])
+                {
+                    [delegate asyncUIImageViewLoaded:self];
+                }
+            });
+        }
+    });
 }
 
 

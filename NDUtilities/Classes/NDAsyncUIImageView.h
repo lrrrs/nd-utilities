@@ -11,9 +11,8 @@
 
 @interface NDAsyncUIImageView : UIImageView
 {
-	NSURLConnection *connection;
-	NSMutableData *data;
     id<AsyncUIImageViewDelegate> __unsafe_unretained delegate;
+    NSURL *currentImageURL;
 }
 
 @property (nonatomic, unsafe_unretained) id<AsyncUIImageViewDelegate> delegate;
