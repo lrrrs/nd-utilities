@@ -39,6 +39,7 @@
 		textSize = [txt  sizeWithFont:self.font
 		            constrainedToSize:CGSizeMake(_maxWidth, _maxHeight)
 		                lineBreakMode:self.lineBreakMode];
+        
 	}
 	else
 	{
@@ -58,15 +59,11 @@
 	{
 		labelSize.size.width = _maxWidth;
 	}
-    if (_fixedWidth > 0.0f)
-	{
-		labelSize.size.width = _fixedWidth;
-	}
 
 	CGRect newFrame = CGRectMake(self.frame.origin.x,
                                  self.frame.origin.y,
-                                 labelSize.size.width,
-                                 (self.fixedHeight != 0.0f) ? self.fixedHeight : labelSize.size.height);
+                                 (_fixedWidth != 0.0f) ? _fixedWidth : labelSize.size.width,
+                                 (_fixedHeight != 0.0f) ? _fixedHeight : labelSize.size.height);
 
 	self.frame = newFrame;
 }

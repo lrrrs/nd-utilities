@@ -9,7 +9,8 @@
 
 @interface NDStandardLabel : UILabel
 {
-
+    CGFloat _fixedWidth;
+    CGFloat _fixedHeight;
 }
 
 @property (nonatomic) CGPoint position;

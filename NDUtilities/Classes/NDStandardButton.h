@@ -1,6 +1,8 @@
 //
 //  StandardButton.h
 //
+//  Serves as a template for custom buttons
+//
 //  Created by Lars Gerckens on 14.05.12.
 //  Copyright (c) 2012 lars@nulldesign.de. All rights reserved.
 //
@@ -17,7 +19,7 @@
 -(id)initWithBackgroundColor:(UIColor*) color
                      andText:(NSString*) text;
 
--(id)initWithBackgroundImage:(UIImage *) image;
+-(id)initWithImage:(UIImage *) image;
 
 -(id)initWithBackgroundImage:(UIImage *) image
                      andText:(NSString*) text;

@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface NDViewController : UIViewController
+{
+    CGFloat blah;
+}
 
 @end

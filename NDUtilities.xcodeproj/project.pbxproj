@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4600AE691627136E00A36487 /* NDTweener.m in Sources */ = {isa = PBXBuildFile; fileRef = 4600AE681627136E00A36487 /* NDTweener.m */; };
+		466C3E7716271051006DAB06 /* NDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 466C3E7616271051006DAB06 /* NDImageCache.m */; };
 		4670B1CD15B587B50085C493 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4670B1CC15B587B50085C493 /* UIKit.framework */; };
 		4670B1CF15B587B50085C493 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4670B1CE15B587B50085C493 /* Foundation.framework */; };
 		4670B1D115B587B50085C493 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4670B1D015B587B50085C493 /* CoreGraphics.framework */; };
@@ -25,6 +27,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4600AE671627136E00A36487 /* NDTweener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDTweener.h; sourceTree = "<group>"; };
+		4600AE681627136E00A36487 /* NDTweener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDTweener.m; sourceTree = "<group>"; };
+		466C3E7516271051006DAB06 /* NDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDImageCache.h; sourceTree = "<group>"; };
+		466C3E7616271051006DAB06 /* NDImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDImageCache.m; sourceTree = "<group>"; };
+		466C3E79162711BD006DAB06 /* NDTweenTransitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDTweenTransitions.h; sourceTree = "<group>"; };
 		4670B1C815B587B50085C493 /* NDUtilities.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NDUtilities.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4670B1CC15B587B50085C493 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4670B1CE15B587B50085C493 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -38,19 +45,19 @@
 		4670B1DE15B587B50085C493 /* NDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDViewController.h; sourceTree = "<group>"; };
 		4670B1DF15B587B50085C493 /* NDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDViewController.m; sourceTree = "<group>"; };
 		4670B1E215B587B60085C493 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NDViewController.xib; sourceTree = "<group>"; };
-		4670B1EA15B587FC0085C493 /* NDAsyncUIImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; path = NDAsyncUIImageView.h; sourceTree = "<group>"; };
+		4670B1EA15B587FC0085C493 /* NDAsyncUIImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDAsyncUIImageView.h; sourceTree = "<group>"; };
 		4670B1EB15B587FC0085C493 /* NDAsyncUIImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDAsyncUIImageView.m; sourceTree = "<group>"; };
-		4670B1EC15B587FC0085C493 /* NDBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; path = NDBackgroundView.h; sourceTree = "<group>"; };
+		4670B1EC15B587FC0085C493 /* NDBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDBackgroundView.h; sourceTree = "<group>"; };
 		4670B1ED15B587FC0085C493 /* NDBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDBackgroundView.m; sourceTree = "<group>"; };
-		4670B1EE15B587FC0085C493 /* NDCGContextHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; path = NDCGContextHelper.h; sourceTree = "<group>"; };
+		4670B1EE15B587FC0085C493 /* NDCGContextHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDCGContextHelper.h; sourceTree = "<group>"; };
 		4670B1EF15B587FC0085C493 /* NDCGContextHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDCGContextHelper.m; sourceTree = "<group>"; };
-		4670B1F015B587FC0085C493 /* NDLayoutHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; path = NDLayoutHelper.h; sourceTree = "<group>"; };
+		4670B1F015B587FC0085C493 /* NDLayoutHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDLayoutHelper.h; sourceTree = "<group>"; };
 		4670B1F115B587FC0085C493 /* NDLayoutHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDLayoutHelper.m; sourceTree = "<group>"; };
-		4670B1F215B587FC0085C493 /* NDStandardButton.h */ = {isa = PBXFileReference; fileEncoding = 4; path = NDStandardButton.h; sourceTree = "<group>"; };
+		4670B1F215B587FC0085C493 /* NDStandardButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDStandardButton.h; sourceTree = "<group>"; };
 		4670B1F315B587FC0085C493 /* NDStandardButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDStandardButton.m; sourceTree = "<group>"; };
-		4670B1F415B587FC0085C493 /* NDStandardLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; path = NDStandardLabel.h; sourceTree = "<group>"; };
+		4670B1F415B587FC0085C493 /* NDStandardLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDStandardLabel.h; sourceTree = "<group>"; };
 		4670B1F515B587FC0085C493 /* NDStandardLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDStandardLabel.m; sourceTree = "<group>"; };
-		4670B1F615B587FC0085C493 /* NDUUIDGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; path = NDUUIDGenerator.h; sourceTree = "<group>"; };
+		4670B1F615B587FC0085C493 /* NDUUIDGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDUUIDGenerator.h; sourceTree = "<group>"; };
 		4670B1F715B587FC0085C493 /* NDUUIDGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDUUIDGenerator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +136,8 @@
 				4670B1ED15B587FC0085C493 /* NDBackgroundView.m */,
 				4670B1EE15B587FC0085C493 /* NDCGContextHelper.h */,
 				4670B1EF15B587FC0085C493 /* NDCGContextHelper.m */,
+				466C3E7516271051006DAB06 /* NDImageCache.h */,
+				466C3E7616271051006DAB06 /* NDImageCache.m */,
 				4670B1F015B587FC0085C493 /* NDLayoutHelper.h */,
 				4670B1F115B587FC0085C493 /* NDLayoutHelper.m */,
 				4670B1F215B587FC0085C493 /* NDStandardButton.h */,
@@ -137,6 +146,9 @@
 				4670B1F515B587FC0085C493 /* NDStandardLabel.m */,
 				4670B1F615B587FC0085C493 /* NDUUIDGenerator.h */,
 				4670B1F715B587FC0085C493 /* NDUUIDGenerator.m */,
+				466C3E79162711BD006DAB06 /* NDTweenTransitions.h */,
+				4600AE671627136E00A36487 /* NDTweener.h */,
+				4600AE681627136E00A36487 /* NDTweener.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -214,6 +226,8 @@
 				4670B1FC15B587FC0085C493 /* NDStandardButton.m in Sources */,
 				4670B1FD15B587FC0085C493 /* NDStandardLabel.m in Sources */,
 				4670B1FE15B587FC0085C493 /* NDUUIDGenerator.m in Sources */,
+				466C3E7716271051006DAB06 /* NDImageCache.m in Sources */,
+				4600AE691627136E00A36487 /* NDTweener.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,6 +339,7 @@
 				4670B1E815B587B60085C493 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

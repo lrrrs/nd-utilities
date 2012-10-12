@@ -12,7 +12,7 @@
 
 @synthesize isToggleButton;
 
--(id)initWithBackgroundImage:(UIImage *) image
+-(id)initWithImage:(UIImage *) image
 {
 	self = [super initWithFrame:CGRectMake(0.0, 0.0, image.size.width, image.size.height)];
 	if (self)
