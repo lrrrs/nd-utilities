@@ -30,18 +30,18 @@
     
     NSMethodSignature *sig = [[target class] instanceMethodSignatureForSelector:action];
 	NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:sig];
-
+    
 	// weak ref
 	NSObject *selfRef = self;
-
+    
 	[invocation setTarget:target];
 	[invocation setSelector:action];
-
+    
 	if (sig.numberOfArguments == 3)
 	{
 		[invocation setArgument:&selfRef atIndex:2];
 	}
-
+    
 	[invocations addObject:invocation];
 	[invocationControlEvents addObject:[NSNumber numberWithInt:controlEvents]];
 }
@@ -54,11 +54,11 @@
 	{
 		NSNumber *storedControlEvent = [invocationControlEvents objectAtIndex:i];
 		NSInvocation *invocation = [invocations objectAtIndex:i];
-
+        
 		if ((storedControlEvent.integerValue == controlEvents) && (invocation.target == target) && (invocation.selector == action))
 		{
-            [invocationControlEvents removeObject:storedControlEvent];
-            [invocations removeObject:invocation];
+            [invocationControlEvents removeObjectAtIndex:i];
+            [invocations removeObjectAtIndex:i];
             return;
 		}
 	}
@@ -87,17 +87,8 @@
 			{
 				[invocation setArgument:&data atIndex:3];
 			}
-
-            if(sig)
-            {
-                [invocation invoke];
-            }
-            else
-            {
-                // delete invalid events... targets might have been deallocated
-                [invocationControlEvents removeObject:storedControlEvent];
-                [invocations removeObject:invocation];
-            }
+            
+            [invocation invoke];
 		}
 	}
 }

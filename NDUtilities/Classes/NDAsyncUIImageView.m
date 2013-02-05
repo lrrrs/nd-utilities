@@ -39,6 +39,7 @@
 		if (cachedImage)
 		{
 			self.image = cachedImage;
+            doFadeIn = NO;
 			[self finishLoading];
 			return;
 		}

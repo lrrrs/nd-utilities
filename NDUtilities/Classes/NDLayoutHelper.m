@@ -29,6 +29,7 @@
 }
 
 
+
 + (void) placeBefore:(UIView*)left
                right:(UIView*)right
                  gap:(CGFloat)gap
@@ -38,6 +39,7 @@
                             left.frame.size.width,
                             left.frame.size.height);
 }
+
 
 
 + (void) placeNext:(UIView*)left
@@ -65,65 +67,65 @@
 
 + (void) align:(UIView*)front
           back:(UIView*)back
-     alignment:(LayoutHelperAlignMode)alignment
+     alignment:(NDLayoutHelperAlignMode)alignment
            gap:(CGFloat)gap
 {
     switch (alignment)
     {
-        case LayoutHelperAlignModeTopLeft:
-        case LayoutHelperAlignModeLeftTop:
+        case NDLayoutHelperAlignModeTopLeft:
+        case NDLayoutHelperAlignModeLeftTop:
             front.frame = CGRectMake(gap,
                                      gap,
                                      front.frame.size.width,
                                      front.frame.size.height);
             break;
 
-        case LayoutHelperAlignModeTopCenter:
+        case NDLayoutHelperAlignModeTopCenter:
             front.frame = CGRectMake(roundf(back.frame.size.width * 0.5 - front.frame.size.width * 0.5),
                                      gap,
                                      front.frame.size.width,
                                      front.frame.size.height);
             break;
 
-        case LayoutHelperAlignModeTopRight:
-        case LayoutHelperAlignModeRightTop:
+        case NDLayoutHelperAlignModeTopRight:
+        case NDLayoutHelperAlignModeRightTop:
             front.frame = CGRectMake(roundf(back.frame.size.width - front.frame.size.width - gap),
                                      gap,
                                      front.frame.size.width,
                                      front.frame.size.height);
             break;
 
-        case LayoutHelperAlignModeRightCenter:
+        case NDLayoutHelperAlignModeRightCenter:
             front.frame = CGRectMake(roundf(back.frame.size.width - front.frame.size.width - gap),
                                      roundf(back.frame.size.height * 0.5 - front.frame.size.height * 0.5),
                                      front.frame.size.width,
                                      front.frame.size.height);
             break;
 
-        case LayoutHelperAlignModeRightBottom:
-        case LayoutHelperAlignModeBottomRight:
+        case NDLayoutHelperAlignModeRightBottom:
+        case NDLayoutHelperAlignModeBottomRight:
             front.frame = CGRectMake(roundf(back.frame.size.width - front.frame.size.width - gap),
                                      roundf(back.frame.size.height - front.frame.size.height - gap),
                                      front.frame.size.width,
                                      front.frame.size.height);
             break;
 
-        case LayoutHelperAlignModeBottomCenter:
+        case NDLayoutHelperAlignModeBottomCenter:
             front.frame = CGRectMake(roundf(back.frame.size.width * 0.5 - front.frame.size.width * 0.5),
                                      roundf(back.frame.size.height - front.frame.size.height - gap),
                                      front.frame.size.width,
                                      front.frame.size.height);
             break;
 
-        case LayoutHelperAlignModeBottomLeft:
-        case LayoutHelperAlignModeLeftBottom:
+        case NDLayoutHelperAlignModeBottomLeft:
+        case NDLayoutHelperAlignModeLeftBottom:
             front.frame = CGRectMake(gap,
                                      roundf(back.frame.size.height - front.frame.size.height - gap),
                                      front.frame.size.width,
                                      front.frame.size.height);
             break;
 
-        case LayoutHelperAlignModeLeftCenter:
+        case NDLayoutHelperAlignModeLeftCenter:
             front.frame = CGRectMake(gap,
                                      roundf(back.frame.size.height * 0.5 - front.frame.size.height * 0.5),
                                      front.frame.size.width,
@@ -140,5 +142,41 @@
 }
 
 
+
++ (CGSize) getTextSize:(NSString*)text font:(UIFont*)font bounds:(CGSize) bounds;
+{
+    CTFontRef ctFont = CTFontCreateWithName((__bridge CFStringRef) font.fontName, font.pointSize, NULL);
+    
+    //  When you create an attributed string the default paragraph style has a leading
+    //  of 0.0. Create a paragraph style that will set the line adjustment equal to
+    //  the leading value of the font.
+    CGFloat leading = font.lineHeight - font.ascender + font.descender;
+    CTParagraphStyleSetting paragraphSettings[1] = { kCTParagraphStyleSpecifierLineSpacingAdjustment, sizeof(CGFloat), &leading };
+    
+    CTParagraphStyleRef paragraphStyle = CTParagraphStyleCreate(paragraphSettings, 1);
+    CFRange textRange = CFRangeMake(0, text.length);
+    
+    //  Create an empty mutable string big enough to hold our test
+    CFMutableAttributedStringRef string = CFAttributedStringCreateMutable(kCFAllocatorDefault, text.length);
+    
+    //  Inject our text into it
+    CFAttributedStringReplaceString(string, CFRangeMake(0, 0), (CFStringRef) text);
+    
+    //  Apply our font and line spacing attributes over the span
+    CFAttributedStringSetAttribute(string, textRange, kCTFontAttributeName, ctFont);
+    CFAttributedStringSetAttribute(string, textRange, kCTParagraphStyleAttributeName, paragraphStyle);
+    
+    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString(string);
+    CFRange fitRange;
+    
+    CGSize frameSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, textRange, NULL, bounds, &fitRange);
+    
+    CFRelease(framesetter);
+    CFRelease(paragraphStyle);
+    CFRelease(string);
+    CFRelease(ctFont);
+    
+    return frameSize;
+}
 
 @end

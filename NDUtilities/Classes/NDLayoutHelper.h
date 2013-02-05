@@ -6,26 +6,27 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreText/CoreText.h>
 
 typedef enum
 {
-    LayoutHelperAlignModeTopLeft = 0,
-    LayoutHelperAlignModeTopCenter = 1,
-    LayoutHelperAlignModeTopRight = 2,
+    NDLayoutHelperAlignModeTopLeft = 0,
+    NDLayoutHelperAlignModeTopCenter = 1,
+    NDLayoutHelperAlignModeTopRight = 2,
     
-    LayoutHelperAlignModeRightTop = 3,
-    LayoutHelperAlignModeRightCenter = 4,
-    LayoutHelperAlignModeRightBottom = 5,
+    NDLayoutHelperAlignModeRightTop = 3,
+    NDLayoutHelperAlignModeRightCenter = 4,
+    NDLayoutHelperAlignModeRightBottom = 5,
     
-    LayoutHelperAlignModeBottomRight = 6,
-    LayoutHelperAlignModeBottomCenter = 7,
-    LayoutHelperAlignModeBottomLeft = 8,
+    NDLayoutHelperAlignModeBottomRight = 6,
+    NDLayoutHelperAlignModeBottomCenter = 7,
+    NDLayoutHelperAlignModeBottomLeft = 8,
     
-    LayoutHelperAlignModeLeftBottom = 9,
-    LayoutHelperAlignModeLeftCenter = 10,
-    LayoutHelperAlignModeLeftTop = 11
+    NDLayoutHelperAlignModeLeftBottom = 9,
+    NDLayoutHelperAlignModeLeftCenter = 10,
+    NDLayoutHelperAlignModeLeftTop = 11
 } 
-LayoutHelperAlignMode;
+NDLayoutHelperAlignMode;
 
 @interface NDLayoutHelper : NSObject
 
@@ -50,9 +51,11 @@ LayoutHelperAlignMode;
 
 +(void) align:(UIView*) front
          back:(UIView*) back
-    alignment:(LayoutHelperAlignMode) alignment
+    alignment:(NDLayoutHelperAlignMode) alignment
           gap:(CGFloat) gap;
 
 +(UIImageView *) getImage:(NSString *) file;
+
++ (CGSize) getTextSize:(NSString*)text font:(UIFont*)font bounds:(CGSize) bounds;
 
 @end
