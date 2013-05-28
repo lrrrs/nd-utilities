@@ -66,6 +66,7 @@
         if((storedControlEvent.integerValue == controlEvent) && (invocation.target == target)) {
             [invocationControlEvents removeObjectAtIndex:i];
             [invocations removeObjectAtIndex:i];
+            --i;
         }
     }
 }
@@ -73,12 +74,12 @@
 - (void)removeTarget:(id)target
 {
     for(int i = 0; i < invocationControlEvents.count; i++) {
-        NSNumber *storedControlEvent = [invocationControlEvents objectAtIndex:i];
         NSInvocation *invocation = [invocations objectAtIndex:i];
 
         if(invocation.target == target) {
             [invocationControlEvents removeObjectAtIndex:i];
             [invocations removeObjectAtIndex:i];
+            --i;
         }
     }
 }
