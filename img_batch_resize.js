@@ -59,23 +59,35 @@ win.Process.onClick = function()
 				app.preferences.rulerUnits = Units.PIXELS;
 				var file = fileList[s];
 				open(file);
-				var Name = activeDocument.name;//.match(/(.*)\.[^\.]+$/)[1];
-				
+				//var Name = activeDocument.name;//.match(/(.*)\.[^\.]+$/)[1];
 				//alert(Name);
-				
-				if(/@2x.png/.test(Name))
+
+				if(/@2x.png/.test(activeDocument.name) || /@2x~iphone.png/.test(activeDocument.name))
 				{
 					halveImage();
-					var saveFileName = activeDocument.name.replace(/@2x.png/,".png");
+					
+					var saveFileName = activeDocument.name.replace(/@2x.png/, ".png");
+					saveFileName = saveFileName.replace(/@2x~iphone.png/, "~iphone.png");
 					var saveFile = File(activeDocument.path + "/" + saveFileName);
-					SavePNG(saveFile);
+					
+					// if(saveFile.exists) saveFile.remove();
+					if(!saveFile.exists)
+					{
+						SavePNG(saveFile);
+					}
 				}
-				else if(/@2x.jpg/.test(Name))
+				else if(/@2x.jpg/.test(activeDocument.name) || /@2x~iphone.jpg/.test(activeDocument.name))
 				{
 					halveImage();
-					var saveFileName = activeDocument.name.replace(/@2x.jpg/,".jpg");
+					var saveFileName = activeDocument.name.replace(/@2x.jpg/, ".jpg");
+					saveFileName = saveFileName.replace(/@2x~iphone.jpg/, "~iphone.jpg");
 					var saveFile = File(activeDocument.path + "/" + saveFileName);
-					SaveJPEG(saveFile);
+					
+					// if(saveFile.exists) saveFile.remove();
+					if(!saveFile.exists)
+					{
+						SaveJPEG(saveFile);
+					}
 				}
 				
 				app.activeDocument.close(SaveOptions.DONOTSAVECHANGES);
@@ -106,7 +118,7 @@ function halveImage()
 	var doc=activeDocument;
 	var newWidth = doc.width * 0.5;
 	var newHeight = doc.height * 0.5;
-	doc.resizeImage(newWidth, newHeight, undefined, ResampleMethod.BICUBIC);
+	doc.resizeImage(newWidth, newHeight, undefined, ResampleMethod.BICUBICSHARPER);
 }
 
 function SavePNG(savefile)

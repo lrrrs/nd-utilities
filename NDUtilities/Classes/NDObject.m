@@ -7,81 +7,100 @@
 
 #import "NDObject.h"
 
+#define IGNORE_EVENT_ID -99999
+
+@implementation NDInvocationStorage
+
+@end
+
 @implementation NDObject
 
 - (id)init
 {
     self = [super init];
     if(self) {
-        invocations = [[NSMutableArray alloc] init];
-        invocationControlEvents = [[NSMutableArray alloc] init];
+        _invocationListByTarget = [[NSMapTable alloc] initWithKeyOptions:NSMapTableWeakMemory
+                                                            valueOptions:NSMapTableStrongMemory
+                                                                capacity:10];
     }
     return self;
 }
 
+- (void)cleanUpHashMap
+{
+    NSMapTable *newInvocationListByTarget = [[NSMapTable alloc] initWithKeyOptions:NSMapTableWeakMemory
+                                                                      valueOptions:NSMapTableStrongMemory
+                                                                          capacity:10];
+
+    NSEnumerator *enumerator = [_invocationListByTarget keyEnumerator];
+    id storedTarget;
+
+    while((storedTarget = [enumerator nextObject])) {
+        if(storedTarget != nil) {
+            [newInvocationListByTarget setObject:[_invocationListByTarget objectForKey:storedTarget] forKey:storedTarget];
+        }
+    }
+
+    [_invocationListByTarget removeAllObjects];
+    _invocationListByTarget = newInvocationListByTarget;
+}
 
 - (void)addTarget:(id)target action:(SEL)action forControlEvent:(NSInteger)controlEvent
 {
+    if(_invocationListByTarget.count > 10) {
+        [self cleanUpHashMap];
+    }
+
     // check if the event exists already and remove it... no duplicates
     [self removeTarget:target action:action forControlEvent:controlEvent];
 
     NSMethodSignature *sig = [[target class] instanceMethodSignatureForSelector:action];
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:sig];
 
-    // weak ref
-    NSObject *selfRef = self;
+    __weak NSObject *selfRef = self;
 
     [invocation setTarget:target];
     [invocation setSelector:action];
 
-    if(sig.numberOfArguments == 3) {
+    if(sig.numberOfArguments >= 3) {
         [invocation setArgument:&selfRef atIndex:2];
     }
 
-    [invocations addObject:invocation];
-    [invocationControlEvents addObject:[NSNumber numberWithInt:controlEvent]];
-}
+    NSMutableArray *invocationList = [_invocationListByTarget objectForKey:target];
 
+    if(!invocationList) {
+        invocationList = [NSMutableArray array];
+        [_invocationListByTarget setObject:invocationList forKey:target];
+    }
+
+    NDInvocationStorage *invocationStorage = [[NDInvocationStorage alloc] init];
+    invocationStorage.invocation = invocation;
+    invocationStorage.controlEvent = controlEvent;
+    [invocationList addObject:invocationStorage];
+}
 
 - (void)removeTarget:(id)target action:(SEL)action forControlEvent:(NSInteger)controlEvent
 {
-    for(int i = 0; i < invocationControlEvents.count; i++) {
-        NSNumber *storedControlEvent = [invocationControlEvents objectAtIndex:i];
-        NSInvocation *invocation = [invocations objectAtIndex:i];
+    NSMutableArray *invocationList = [_invocationListByTarget objectForKey:target];
 
-        if((storedControlEvent.integerValue == controlEvent) && (invocation.target == target) && (invocation.selector == action)) {
-            [invocationControlEvents removeObjectAtIndex:i];
-            [invocations removeObjectAtIndex:i];
-            return;
+    for(NSUInteger i = 0; i < invocationList.count; i++) {
+        NDInvocationStorage *invocationStorage = invocationList[i];
+
+        if((invocationStorage.controlEvent == controlEvent || controlEvent == IGNORE_EVENT_ID) && (invocationStorage.invocation.selector == action || !action)) {
+            [invocationList removeObjectAtIndex:i];
+            --i;
         }
     }
 }
 
 - (void)removeTarget:(id)target forControlEvent:(NSInteger)controlEvent
 {
-    for(int i = 0; i < invocationControlEvents.count; i++) {
-        NSNumber *storedControlEvent = [invocationControlEvents objectAtIndex:i];
-        NSInvocation *invocation = [invocations objectAtIndex:i];
-
-        if((storedControlEvent.integerValue == controlEvent) && (invocation.target == target)) {
-            [invocationControlEvents removeObjectAtIndex:i];
-            [invocations removeObjectAtIndex:i];
-            --i;
-        }
-    }
+    [self removeTarget:target action:nil forControlEvent:controlEvent];
 }
 
 - (void)removeTarget:(id)target
 {
-    for(int i = 0; i < invocationControlEvents.count; i++) {
-        NSInvocation *invocation = [invocations objectAtIndex:i];
-
-        if(invocation.target == target) {
-            [invocationControlEvents removeObjectAtIndex:i];
-            [invocations removeObjectAtIndex:i];
-            --i;
-        }
-    }
+    [self removeTarget:target action:nil forControlEvent:IGNORE_EVENT_ID];
 }
 
 - (void)invokeControlEvent:(NSInteger)controlEvent
@@ -89,23 +108,39 @@
     [self invokeControlEvent:controlEvent withData:nil];
 }
 
-
 - (void)invokeControlEvent:(NSInteger)controlEvent withData:(NSObject *)data
 {
-    for(int i = 0; i < invocationControlEvents.count; i++) {
-        NSNumber *storedControlEvent = [invocationControlEvents objectAtIndex:i];
-        if(storedControlEvent.integerValue == controlEvent) {
-            NSInvocation *invocation = [invocations objectAtIndex:i];
-            NSMethodSignature *sig = [[invocation.target class] instanceMethodSignatureForSelector:invocation.selector];
+    NSEnumerator *enumerator = [_invocationListByTarget keyEnumerator];
+    id storedTarget;
 
-            if(sig.numberOfArguments == 4) {
-                [invocation setArgument:&data atIndex:3];
+    NSMutableArray *invocationsToInvoke = [NSMutableArray array];
+
+    while((storedTarget = [enumerator nextObject])) {
+        NSMutableArray *invocationList = [_invocationListByTarget objectForKey:storedTarget];
+
+        for(NSUInteger i = 0; i < invocationList.count; i++) {
+            NDInvocationStorage *invocationStorage = invocationList[i];
+
+            if(invocationStorage.controlEvent == controlEvent) {
+                NSInvocation *invocation = invocationStorage.invocation;
+                NSMethodSignature *sig = [[invocation.target class] instanceMethodSignatureForSelector:invocation.selector];
+
+                if(sig.numberOfArguments == 4) {
+                    [invocation setArgument:&data atIndex:3];
+                }
+
+                [invocationsToInvoke addObject:invocation];
             }
-
-            [invocation invoke];
         }
     }
-}
 
+    // fire the invocation
+
+    for(NSInvocation *invocation in invocationsToInvoke) {
+        [invocation invoke];
+    }
+
+    [invocationsToInvoke removeAllObjects];
+}
 
 @end

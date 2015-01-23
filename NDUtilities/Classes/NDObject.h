@@ -7,17 +7,23 @@
 
 #import <Foundation/Foundation.h>
 
+@interface NDInvocationStorage : NSObject
+
+@property (nonatomic, strong) NSInvocation *invocation;
+@property (nonatomic, assign) NSInteger controlEvent;
+
+@end
+
 @interface NDObject : NSObject
 {
-    NSMutableArray *invocations;
-	NSMutableArray *invocationControlEvents;
+    NSMapTable *_invocationListByTarget;
 }
 
 - (void)addTarget:(id)target action:(SEL)action forControlEvent:(NSInteger)controlEvent;
 - (void)removeTarget:(id)target action:(SEL)action forControlEvent:(NSInteger)controlEvent;
 - (void)removeTarget:(id)target forControlEvent:(NSInteger)controlEvent;
 - (void)removeTarget:(id)target;
-- (void)invokeControlEvent:(NSInteger)controlEvent withData:(NSObject*)data;
+- (void)invokeControlEvent:(NSInteger)controlEvent withData:(NSObject *)data;
 - (void)invokeControlEvent:(NSInteger)controlEvent;
 
 @end
