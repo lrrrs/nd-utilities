@@ -8,13 +8,16 @@
 
 #if os(iOS)
 
-typealias PLATFORM_COLOR = UIColor
-typealias PLATFORM_VIEW = UIVIew
+import UIKit
 import Foundation
+    
+typealias PLATFORM_COLOR = UIColor
+typealias PLATFORM_VIEW = UIView
   
 #else
     
 import Cocoa
+
 typealias PLATFORM_COLOR = NSColor
 typealias PLATFORM_VIEW = NSView
         
@@ -31,7 +34,7 @@ extension PLATFORM_COLOR
     }
 }
 
-enum NDLayoutHelperDirection {
+enum LayoutHelperDirection {
     case TopLeft
     case TopCenter
     case TopRight
@@ -57,6 +60,18 @@ extension PLATFORM_VIEW
     func y(newY:CGFloat) -> PLATFORM_VIEW
     {
         self.frame.origin.y = newY
+        return self
+    }
+    
+    func moveByX(deltaX:CGFloat) -> PLATFORM_VIEW
+    {
+        self.frame.origin.x += deltaX
+        return self
+    }
+    
+    func moveByY(deltaY:CGFloat) -> PLATFORM_VIEW
+    {
+        self.frame.origin.y += deltaY
         return self
     }
     
@@ -107,7 +122,7 @@ extension PLATFORM_VIEW
         return self
     }
     
-    func alignWith(otherView:PLATFORM_VIEW, direction:NDLayoutHelperDirection, gap:CGFloat = 0.0) -> PLATFORM_VIEW
+    func alignWith(otherView:PLATFORM_VIEW, direction:LayoutHelperDirection, gap:CGFloat = 0.0) -> PLATFORM_VIEW
     {
         switch direction
         {
