@@ -14,9 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4670B1C715B587B50085C493"
-               BuildableName = "NDUtilities.app"
-               BlueprintName = "NDUtilities"
+               BlueprintIdentifier = "46DCBFF91AC3636B00E58A6A"
+               BuildableName = "SwiftTests.app"
+               BlueprintName = "SwiftTests"
+               ReferencedContainer = "container:NDUtilities.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "46DCC00D1AC3636B00E58A6A"
+               BuildableName = "SwiftTestsTests.xctest"
+               BlueprintName = "SwiftTestsTests"
                ReferencedContainer = "container:NDUtilities.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,13 +42,23 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "46DCC00D1AC3636B00E58A6A"
+               BuildableName = "SwiftTestsTests.xctest"
+               BlueprintName = "SwiftTestsTests"
+               ReferencedContainer = "container:NDUtilities.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4670B1C715B587B50085C493"
-            BuildableName = "NDUtilities.app"
-            BlueprintName = "NDUtilities"
+            BlueprintIdentifier = "46DCBFF91AC3636B00E58A6A"
+            BuildableName = "SwiftTests.app"
+            BlueprintName = "SwiftTests"
             ReferencedContainer = "container:NDUtilities.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -52,9 +76,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4670B1C715B587B50085C493"
-            BuildableName = "NDUtilities.app"
-            BlueprintName = "NDUtilities"
+            BlueprintIdentifier = "46DCBFF91AC3636B00E58A6A"
+            BuildableName = "SwiftTests.app"
+            BlueprintName = "SwiftTests"
             ReferencedContainer = "container:NDUtilities.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -71,9 +95,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4670B1C715B587B50085C493"
-            BuildableName = "NDUtilities.app"
-            BlueprintName = "NDUtilities"
+            BlueprintIdentifier = "46DCBFF91AC3636B00E58A6A"
+            BuildableName = "SwiftTests.app"
+            BlueprintName = "SwiftTests"
             ReferencedContainer = "container:NDUtilities.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

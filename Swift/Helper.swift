@@ -25,7 +25,7 @@ typealias PLATFORM_VIEW = NSView
 
 extension PLATFORM_COLOR
 {
-    convenience init(hexValue: Int, alpha: CGFloat = 1.0)
+    convenience init(hexValue: UInt, alpha: CGFloat = 1.0)
     {
         let red = CGFloat((hexValue & 0xFF0000) >> 16) / 255.0
         let green = CGFloat((hexValue & 0xFF00) >> 8) / 255.0
