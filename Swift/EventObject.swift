@@ -10,7 +10,7 @@ import Foundation
 
 protocol TargetAction
 {
-    func performAction(AnyObject)
+    func performAction(targetRef : AnyObject)
 }
 
 struct TargetActionWrapper<T: AnyObject where T: Equatable> : TargetAction
@@ -31,7 +31,7 @@ struct TargetActionWrapper<T: AnyObject where T: Equatable> : TargetAction
 
 class EventObject : NSObject
 {
-    var actions = [UInt : [TargetAction]]()
+    private var actions = [UInt : [TargetAction]]()
     
     func addTarget<T: AnyObject where T: Equatable>(target: T, action: (T) -> (AnyObject) -> (), controlEvent: UInt)
     {
