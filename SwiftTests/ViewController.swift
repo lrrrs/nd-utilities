@@ -15,8 +15,9 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         let e = EventObject()
-        e.setTarget(self, action: ViewController.testMethod, controlEvent: 1)
+        e.addTarget(self, action: ViewController.testMethod, controlEvent: 1)
         e.performActionForControlEvent(1)
+        e.removeTargetForControlEvent(self, controlEvent: 1)
     }
 
     override func didReceiveMemoryWarning() {
