@@ -5,20 +5,21 @@
 //  Created by Lars Gerckens on 25.03.15.
 //
 //  Adopted from: http://oleb.net/blog/2014/07/swift-instance-methods-curried-functions/
+//  http://blog.xebia.com/2014/10/09/function-references-in-swift-and-retain-cycles/
 
 import Foundation
 
 protocol TargetAction
 {
-    func performAction(targetRef : AnyObject)
+    func performAction(EventObject)
 }
 
 struct TargetActionWrapper<T: AnyObject where T: Equatable> : TargetAction
 {
     weak var target: T?
-    let action: (T) -> (AnyObject) -> ()
+    let action: (T) -> (EventObject) -> ()
     
-    func performAction(targetRef : AnyObject)
+    func performAction(targetRef : EventObject)
     {
         if let t = target
         {
@@ -33,7 +34,7 @@ class EventObject : NSObject
 {
     private var actions = [UInt : [TargetAction]]()
     
-    func addTarget<T: AnyObject where T: Equatable>(target: T, action: (T) -> (AnyObject) -> (), controlEvent: UInt)
+    func addTarget<T: AnyObject where T: Equatable>(target: T, action: (T) -> (EventObject) -> (), controlEvent: UInt)
     {
         if(actions[controlEvent] == nil)
         {

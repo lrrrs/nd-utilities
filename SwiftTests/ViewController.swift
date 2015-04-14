@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func testMethod(ref: AnyObject)
+    func testMethod(ref: EventObject)
     {
         
     }
