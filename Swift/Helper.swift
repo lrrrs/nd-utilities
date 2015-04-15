@@ -7,21 +7,66 @@
 //
 
 #if os(iOS)
-
-import UIKit
-import Foundation
     
-typealias PLATFORM_COLOR = UIColor
-typealias PLATFORM_VIEW = UIView
-  
+    import UIKit
+    import Foundation
+    
+    typealias PLATFORM_COLOR = UIColor
+    typealias PLATFORM_VIEW = UIView
+    
+    #else
+    
+    import Cocoa
+    
+    typealias PLATFORM_COLOR = NSColor
+    typealias PLATFORM_VIEW = NSView
+    
+#endif
+
+// MARK: - array extension
+
+extension Array
+{
+    mutating func removeObject<U: Equatable>(object: U)
+    {
+        var index: Int?
+        for (idx, objectToCompare) in enumerate(self)
+        {
+            if let to = objectToCompare as? U
+            {
+                if(object == to)
+                {
+                    index = idx
+                }
+            }
+        }
+        
+        if(index != nil)
+        {
+            self.removeAtIndex(index!)
+        }
+    }
+}
+
+// MARK: - logging extension
+
+#if DEBUG
+    
+func debug_log(logMessage:String, file:String = __FILE__, function:String = __FUNCTION__, line:Int = __LINE__)
+{
+    println("\(file.lastPathComponent).\(function):\(line): \(logMessage)")
+}
+    
 #else
     
-import Cocoa
-
-typealias PLATFORM_COLOR = NSColor
-typealias PLATFORM_VIEW = NSView
+func debug_log(logMessage:String, file:String = __FILE__, function:String = __FUNCTION__, line:Int = __LINE__)
+{
         
+}
+    
 #endif
+
+// MARK: - color extension
 
 extension PLATFORM_COLOR
 {
@@ -33,6 +78,8 @@ extension PLATFORM_COLOR
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
 }
+
+// MARK: - layout extension
 
 enum LayoutHelperDirection {
     case TopLeft
@@ -107,7 +154,7 @@ extension PLATFORM_VIEW
         self.frame.origin.y = otherView.frame.origin.y
         return self
     }
-
+    
     func placeLeftOf(otherView:PLATFORM_VIEW, gap:CGFloat = 0.0) -> PLATFORM_VIEW
     {
         self.frame.origin.x = otherView.frame.origin.x - self.frame.size.width - gap
@@ -126,37 +173,37 @@ extension PLATFORM_VIEW
     {
         switch direction
         {
-            case .TopLeft, .LeftTop:
-                self.frame.origin.x = gap
-                self.frame.origin.y = gap
+        case .TopLeft, .LeftTop:
+            self.frame.origin.x = gap
+            self.frame.origin.y = gap
             
-            case .TopCenter:
-                self.frame.origin.x = round(otherView.frame.size.width * 0.5 - self.frame.size.width * 0.5)
-                self.frame.origin.y = gap
-                
-            case .TopRight, .RightTop:
-                self.frame.origin.x = round(otherView.frame.size.width - self.frame.size.width - gap)
-                self.frame.origin.y = gap
-                
-            case .RightCenter:
-                self.frame.origin.x = round(otherView.frame.size.width - self.frame.size.width - gap)
-                self.frame.origin.y = round(otherView.frame.size.height * 0.5 - self.frame.size.height * 0.5)
-                
-            case .RightBottom, .BottomRight:
-                self.frame.origin.x = round(otherView.frame.size.width - self.frame.size.width - gap)
-                self.frame.origin.y = round(otherView.frame.size.height - self.frame.size.height - gap)
-                
-            case .BottomCenter:
-                self.frame.origin.x = round(otherView.frame.size.width * 0.5 - self.frame.size.width * 0.5)
-                self.frame.origin.y = round(otherView.frame.size.height - self.frame.size.height - gap)
-                
-            case .BottomLeft, .LeftBottom:
-                self.frame.origin.x = gap
-                self.frame.origin.y = round(otherView.frame.size.height - self.frame.size.height - gap)
-                
-            case .LeftCenter:
-                self.frame.origin.x = gap
-                self.frame.origin.y = round(otherView.frame.size.height * 0.5 - self.frame.size.height * 0.5)
+        case .TopCenter:
+            self.frame.origin.x = round(otherView.frame.size.width * 0.5 - self.frame.size.width * 0.5)
+            self.frame.origin.y = gap
+            
+        case .TopRight, .RightTop:
+            self.frame.origin.x = round(otherView.frame.size.width - self.frame.size.width - gap)
+            self.frame.origin.y = gap
+            
+        case .RightCenter:
+            self.frame.origin.x = round(otherView.frame.size.width - self.frame.size.width - gap)
+            self.frame.origin.y = round(otherView.frame.size.height * 0.5 - self.frame.size.height * 0.5)
+            
+        case .RightBottom, .BottomRight:
+            self.frame.origin.x = round(otherView.frame.size.width - self.frame.size.width - gap)
+            self.frame.origin.y = round(otherView.frame.size.height - self.frame.size.height - gap)
+            
+        case .BottomCenter:
+            self.frame.origin.x = round(otherView.frame.size.width * 0.5 - self.frame.size.width * 0.5)
+            self.frame.origin.y = round(otherView.frame.size.height - self.frame.size.height - gap)
+            
+        case .BottomLeft, .LeftBottom:
+            self.frame.origin.x = gap
+            self.frame.origin.y = round(otherView.frame.size.height - self.frame.size.height - gap)
+            
+        case .LeftCenter:
+            self.frame.origin.x = gap
+            self.frame.origin.y = round(otherView.frame.size.height * 0.5 - self.frame.size.height * 0.5)
         }
         
         return self

@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         
         let e = EventObject()
         e.addTarget(self, action: ViewController.testMethod, controlEvent: 1)
+        e.addTarget(self, action: ViewController.testMethod, controlEvent: 1)
         e.performActionForControlEvent(1)
         e.removeTargetForControlEvent(self, controlEvent: 1)
     }

@@ -11,7 +11,7 @@ import Foundation
 
 protocol TargetAction
 {
-    func performAction(EventObject)
+    func performAction(EventObject) -> Bool
 }
 
 struct TargetActionWrapper<T: AnyObject where T: Equatable> : TargetAction
@@ -19,14 +19,17 @@ struct TargetActionWrapper<T: AnyObject where T: Equatable> : TargetAction
     weak var target: T?
     let action: (T) -> (EventObject) -> ()
     
-    func performAction(targetRef : EventObject)
+    func performAction(targetRef : EventObject) -> Bool
     {
         if let t = target
         {
             // An instance method in Swift is just a type method that takes the instance as an argument 
             // and returns a function which will then be applied to the instance.
             action(t)(targetRef)
+            return true
         }
+        
+        return false
     }
 }
 
@@ -50,7 +53,7 @@ class EventObject : NSObject
         {
             for(var i = 0; i < a.count; i++)
             {
-                let wrapper = a[i] as TargetActionWrapper<T>
+                let wrapper = a[i] as! TargetActionWrapper<T>
                 if(wrapper.target == target)
                 {
                     actions[controlEvent]!.removeAtIndex(i)
@@ -62,11 +65,16 @@ class EventObject : NSObject
     
     func performActionForControlEvent(controlEvent: UInt)
     {
-        if let a = actions[controlEvent]
-        {
-            for(var i = 0; i < a.count; i++)
+        if(actions[controlEvent] != nil)
+        {            
+            for(var i = 0; i < actions[controlEvent]!.count; i++)
             {
-                a[i].performAction(self)
+                let success = actions[controlEvent]![i].performAction(self)
+                if(!success)
+                {
+                    actions[controlEvent]!.removeAtIndex(i)
+                    --i
+                }
             }
         }
     }
